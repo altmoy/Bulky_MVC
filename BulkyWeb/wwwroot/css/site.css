@@ -88,7 +88,11 @@ bg-success {
     border-color: #425F4B !important;
 }
 
-
+.img-logo {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
 
 /* btn-outline-primary */
 
