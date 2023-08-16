@@ -3,8 +3,9 @@ using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulkyWeb.Controllers
+namespace BulkyWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -25,7 +26,7 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            if (obj.Name == obj.DisplayOrder.ToString()) 
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("name", "The display order cannot exactly match the Name.");
             }
@@ -33,22 +34,23 @@ namespace BulkyWeb.Controllers
             {
                 ModelState.AddModelError("", "Test is an invalid name.");
             }
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 _unitOfWork.Category.Add(obj);
                 _unitOfWork.Save();
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index");
             }
-            
+
             return View();
         }
         public IActionResult Edit(int? id)
         {
-            if(id==null || id== 0) 
+            if (id == null || id == 0)
             {
-                return NotFound();    
+                return NotFound();
             }
-            Category? categoryFromDb = _unitOfWork.Category.Get(u=>u.Id == id);  //only workd on Primary Key
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);  //only workd on Primary Key
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id == id); //Can work with other fields in model 
             //Category? categoryFromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
 
@@ -61,7 +63,7 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-           
+
             if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Update(obj);
@@ -91,11 +93,11 @@ namespace BulkyWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj= _unitOfWork.Category.Get(u => u.Id == id);
+            Category? obj = _unitOfWork.Category.Get(u => u.Id == id);
             if (obj == null)
             {
                 return NotFound();
-                
+
             }
             _unitOfWork.Category.Remove(obj);
             _unitOfWork.Save();
