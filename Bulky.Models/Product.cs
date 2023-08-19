@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Bulky.Models
 {
@@ -14,9 +15,8 @@ namespace Bulky.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public required string Title { get; set; }
-        [Required]
-        public string Description { get; set; }
+        public string Title { get; set; }
+         public string Description { get; set; }
         [Required]
         public string ISBN { get; set; }
         [Required]
@@ -43,8 +43,9 @@ namespace Bulky.Models
 
         public int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
+        [ValidateNever]
         public Category Category { get; set; }
-
+        [ValidateNever]
         public string ImageUrl { get; set; }
 
     }

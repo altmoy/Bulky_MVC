@@ -14,7 +14,7 @@
             <div class="col-6 text-end">
             </div>
             <div class="col-6 text-end">
-                <a asp-area="Admin" asp-controller="Product" asp-action="Create" class="btn rounded btn-primary">
+                <a asp-area="Admin" asp-controller="Product" asp-action="Upsert" class="btn rounded btn-primary">
                     <i class="bi bi-plus-circle"></i> Create New Product
                 </a>
             </div>
@@ -39,10 +39,10 @@
                     <td>@obj.ISBN</td>
                     <td>@obj.Price</td>
                     <td>@obj.Author</td>
-                    <td></td>
+                    <td>@obj.Category.Name</td>
                     <td>
                         <div class="w-75 btn-group" role="group">
-                            <a asp-area="Admin" asp-controler="Product" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2 rounded-3">
+                            <a asp-area="Admin" asp-controler="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2 rounded-3">
                                 <i class="bi bi-pencil-square"></i>Edit
                             </a>
                         </div>
