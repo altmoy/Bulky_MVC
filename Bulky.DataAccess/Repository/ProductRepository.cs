@@ -25,6 +25,7 @@ namespace Bulky.DataAccess.Repository
             if (objFromDb != null) 
             {
                 objFromDb.Title = obj.Title;
+                objFromDb.Description = obj.Description;
                 objFromDb.ISBN = obj.ISBN;
                 objFromDb.Price = obj.Price;
                 objFromDb.Price50 = obj.Price50;
