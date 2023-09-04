@@ -23,7 +23,6 @@
             <thread> 
             <tr>
                 <th>Title</th>
-                <th>Description </th>
                 <th>ISBN</th>
                 <th>Price</th>
                 <th>Author</th>
@@ -35,7 +34,6 @@
                 @foreach(var obj in Model.OrderBy(u=>u.Title)){
                 <tr>
                     <td>@obj.Title</td>
-                    <td>@obj.Description</td>
                     <td>@obj.ISBN</td>
                     <td>@obj.Price</td>
                     <td>@obj.Author</td>
