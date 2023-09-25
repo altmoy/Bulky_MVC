@@ -19,7 +19,7 @@
                 </a>
             </div>
         </div>
-        <table class="table table-bordered table-striped">
+        <table id="tblData" class="table table-bordered table-striped">
             <thread> 
             <tr>
                 <th>Title</th>
@@ -30,8 +30,8 @@
   
             </tr>
             </thread>
-            <tbody>
-                @foreach(var obj in Model.OrderBy(u=>u.Title)){
+            @* <tbody> *@
+ @*                @foreach(var obj in Model.OrderBy(u=>u.Title)){
                 <tr>
                     <td>@obj.Title</td>
                     <td>@obj.ISBN</td>
@@ -53,9 +53,12 @@
                         </div>
                     </td>
                 </tr>
-                }
-            </tbody>
+                } *@
+            @* </tbody> *@
         </table>
     </div>  
 
 </div>
+@section Scripts{
+    <script src = "~/js/product.js"></script>
+}
