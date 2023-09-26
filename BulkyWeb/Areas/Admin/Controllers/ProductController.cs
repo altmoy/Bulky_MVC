@@ -1,9 +1,13 @@
 ﻿using Bulky.DataAccess.Repository.IRepository;
+using Bulky.DataAccess.Data;
 using Bulky.Models;
 using Bulky.Models.ViewModels;
+using Bulky.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Data;
 
 namespace BulkyWeb.Areas.Admin.Controllers
 {
@@ -49,7 +53,6 @@ namespace BulkyWeb.Areas.Admin.Controllers
                 productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
                 return View(productVM);
             }
-            return View(productVM);
         }
         [HttpPost]
         public IActionResult Upsert(ProductVM productVM, IFormFile? file)
@@ -109,7 +112,6 @@ namespace BulkyWeb.Areas.Admin.Controllers
                     Value = u.Id.ToString()
                 });
                     
-                return View(productVM);
             }
 
             return View();

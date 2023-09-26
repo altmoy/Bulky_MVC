@@ -1,16 +1,17 @@
+var dataTable;
 $(document).ready(function () {
     loadDataTable();
 });
 
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
-        "ajax": url: '/admin/product/getall'},
+        "ajax": { url:'/admin/product/getall'},
         "columns": [
-            { data: 'Title', "width": "15%" },
-            { data: 'ISBN', "width": "15%" },
-            { data: 'Price', "width": "15%" },
-            { data: 'Author', "width": "15%" }
-            { data: 'Category', "width": "15%" }
+            { data: 'title', "width": "25%" },
+            { data: 'isbn', "width": "15%" },
+            { data: 'listPrice', "width": "10%" },
+            { data: 'author', "width": "15%" }
+            { data: 'category.Name', "width": "10%" }
         ]
     });
 }
