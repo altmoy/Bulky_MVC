@@ -67,15 +67,6 @@ namespace Bulky.DataAccess.Migrations
             migrationBuilder.DropTable(
                 name: "Products");
 
-            migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "Id", "DisplayOrder", "Name" },
-                values: new object[,]
-                {
-                    { 1, 1, "Action" },
-                    { 2, 2, "SciFi" },
-                    { 3, 3, "History" }
-                });
         }
     }
 }

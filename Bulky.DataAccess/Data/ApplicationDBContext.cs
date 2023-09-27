@@ -5,19 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Bulky.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bulky.DataAccess.Data
 {
-        public class ApplicationDBContext : DbContext
+    public class ApplicationDBContext : IdentityDbContext<IdentityUser>
+    {
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
-            public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
-            {
 
-            }
-        public DbSet<Category>Categories{ get; set; }
-        public DbSet<Product>Products{ get; set; }
+        }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get;set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
+            base.OnModelCreating(modelBuilder); //Required for Identity to be used in project
+
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
                 new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
