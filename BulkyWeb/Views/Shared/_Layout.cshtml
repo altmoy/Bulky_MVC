@@ -14,14 +14,27 @@
 </head>
 <body>
     <header>
-        <div class="h-25">
-            
+        <div class="bg-primary text-white box-shadow">
+            <div class="row col-12 pb-md-3">
+                <div class="col-1">
+                </div>
+                <div class="col-1">
+                    <p>      </p>
+                    <img id="logo-Image" alt="logo" src="~/Images/AlumniLogo.png" class="img-logo"></img>
+                </div>
+                <div class="col-8">
+                    <p class="h1 text-center fw-bold pt-4">AFTAC Alumni Association</p>
+                </div>
+                @* <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AFTAC Alumni Association</a> *@
+                <div class="col-2 pt-3">
+                    <img id="logo-Image" alt="logo" src="~/Images/EFAE.png" class="img-logo"></img>
+                </div>
+            </div>
         </div>
         <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container ">
-                <img id="logo-Image" alt="logo" src="~/Images/AlumniLogo.png" class="img-logo"></img>
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AFTAC Alumni Association</a>
                 
+                <div class="row col-12">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -67,16 +80,19 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                    <i class="bi bi-cart color: rgb(225, 225, 225);">  </i> &nbsp;
+                                </a>
+                            </li>
                        @*  } *@
-                        <li>
-                            <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                                <i class="bi bi-cart">  </i> &nbsp; (0)
-                            </a>
-                        </li>
+                        
                     </ul>
                     <partial name="_LoginPartial" />
+
                 </div>
-                <img id="logo-Image" alt="logo" src="~/Images/EFAE.png" class="img-logo"></img>
+               @*  <img id="logo-Image" alt="logo" src="~/Images/EFAE.png" class="img-logo"></img> *@
+                </div>
             </div>
         </nav>
     </header>

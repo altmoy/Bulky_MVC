@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="8.0.0-rc.1.23461.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="8.0.0-rc.1.23461.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="8.0.0-rc.1.23461.3" />
+    <PackageReference Include="Stripe.net" Version="42.9.0" />
   </ItemGroup>
 
 </Project>

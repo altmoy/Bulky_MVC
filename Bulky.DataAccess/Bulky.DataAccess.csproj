@@ -17,6 +17,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.0-rc.1.23421.29" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.0-rc.1.23421.29" />
+    <PackageReference Include="Stripe.net" Version="42.9.0" />
   </ItemGroup>
 
   <ItemGroup>
