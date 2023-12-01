@@ -16,13 +16,13 @@ namespace Bulky.DataAccess.Repository
     {
         private readonly ApplicationDBContext _db;
         internal DbSet<T> dbSet;
-        private ApplicationDBContext db;
+        
         public Repository(ApplicationDBContext db)
         {
             _db = db;
             this.dbSet = _db.Set<T>();
-            //_db.Categories == dbSet;
-            _db.Products.Include(u => u.Category);  //Can have multiple items to include based on foreign keys
+            
+            //_db.Products.Include(u => u.Category);  //pretty sure this should not be here!!!
         }
 
 

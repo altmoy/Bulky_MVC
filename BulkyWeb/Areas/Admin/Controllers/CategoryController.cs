@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace BulkyWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -53,7 +53,7 @@ namespace BulkyWeb.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);  //only workd on Primary Key
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);  //only works on Primary Key
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id == id); //Can work with other fields in model 
             //Category? categoryFromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
 

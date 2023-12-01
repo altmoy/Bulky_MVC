@@ -12,7 +12,7 @@ using System.Data;
 namespace BulkyWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -163,15 +163,16 @@ namespace BulkyWeb.Areas.Admin.Controllers
             {
                 return Json(new { success = false, message = "Error while deleting" });
             }
-            
-            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, 
-                productToBeDeleted.ImageUrl.TrimStart('\\'));
+            else { 
+                var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, 
+                    productToBeDeleted.ImageUrl.TrimStart('\\'));
 
-            if (System.IO.File.Exists(oldImagePath))
-                {
-                    System.IO.File.Delete(oldImagePath);
-                }
-             _unitOfWork.Product.Remove(productToBeDeleted);
+                if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+            }
+            _unitOfWork.Product.Remove(productToBeDeleted);
              _unitOfWork.Save();
            
             return Json(new { success = true, message = "Delete Successful" });

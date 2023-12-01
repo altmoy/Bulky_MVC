@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -44,12 +47,9 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                            @*  @if (User.IsInRole(SD.Role_Admin)) *@
-                            @* { *@
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Orders</a>
                         </li>
-                            @*  } *@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Obituaries
@@ -63,8 +63,8 @@
                                 </li>
                             </ul>
                         </li>
-                       @*  @if (User.IsInRole(SD.Role_Admin)) *@
-                        @* { *@
+                        @if (User.IsInRole(SD.Role_Admin)) 
+                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Content Management
@@ -83,12 +83,23 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                <li>
+                                    @if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.SessionCart) != null)
+                                    {
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
                                     <i class="bi bi-cart color: rgb(225, 225, 225);">  </i> &nbsp;
-                                </a>
-                            </li>
-                       @*  } *@
+                                        (@HttpContextAccessor.HttpContext.Session.GetInt32(SD.SessionCart))
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                            <i class="bi bi-cart color: rgb(225, 225, 225);">  </i> &nbsp;
+                                            (0)
+                                        </a>
+                                    }
+                                </li>
+                        }
                         
                     </ul>
                     <partial name="_LoginPartial" />
